@@ -6,7 +6,7 @@ const getParty = (request, response) => {
 
   fs.stat(file, (err, stats) => {
     if (err) {
-      if (err.code === 'ENOTE') {
+      if (err.code === 'ENOENT') {
         response.writeHead(404);
       }
       return response.end(err);
