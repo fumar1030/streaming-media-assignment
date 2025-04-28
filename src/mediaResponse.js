@@ -2,8 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const streamFile = (request, response, filePath, contentType) => {
- 
-    fs.stat(filePath, (err, stats) => {
+  fs.stat(filePath, (err, stats) => {
     if (err) {
       if (err.code === 'ENOENT') {
         response.writeHead(404);
@@ -52,20 +51,20 @@ const streamFile = (request, response, filePath, contentType) => {
 };
 
 const getParty = (request, response) => {
-    const file = path.resolve(__dirname, '../client/party.mp4');
-    streamFile(request, response, file, 'video/mp4');
-  };
-  
-  const getBling = (request, response) => {
-    const file = path.resolve(__dirname, '../client/bling.mp3');
-    streamFile(request, response, file, 'audio/mp3');
-  };
-  
-  const getBird = (request, response) => {
-    const file = path.resolve(__dirname, '../client/bird.mp4');
-    streamFile(request, response, file, 'video/mp4');
-  };
+  const file = path.resolve(__dirname, '../client/party.mp4');
+  streamFile(request, response, file, 'video/mp4');
+};
 
-  module.exports.getParty = getParty;
-  module.exports.getBling = getBling;
-  module.exports.getBird = getBird;
+const getBling = (request, response) => {
+  const file = path.resolve(__dirname, '../client/bling.mp3');
+  streamFile(request, response, file, 'audio/mp3');
+};
+
+const getBird = (request, response) => {
+  const file = path.resolve(__dirname, '../client/bird.mp4');
+  streamFile(request, response, file, 'video/mp4');
+};
+
+module.exports.getParty = getParty;
+module.exports.getBling = getBling;
+module.exports.getBird = getBird;
